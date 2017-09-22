@@ -183,11 +183,15 @@ public class GenericSingleList<E> implements MyList<E>{
     @Override
     public boolean contains(E value) {
         temporary = root;
-        while(temporary.getNextElement()!=null){
-            temporary = temporary.getNextElement();
-            previous = temporary;
-            if(previous.getValue().equals(value))
-                return true;
+        if (value.equals(root.value)){
+            return true;
+        }else {
+            while (temporary.getNextElement() != null) {
+                temporary = temporary.getNextElement();
+                previous = temporary;
+                if (previous.getValue().equals(value))
+                    return true;
+            }
         }
         return false;
     }
